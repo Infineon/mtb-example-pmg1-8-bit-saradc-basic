@@ -5,7 +5,8 @@ This code example demonstrates the method of using the 8-bit SAR ADC in the USBP
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-pmg1-8-bit-saradc-basic)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzM2NzciLCJTcGVjIE51bWJlciI6IjAwMi0zMzY3NyIsIkRvYyBUaXRsZSI6IkVaLVBEJnRyYWRlOyBQTUcxIE1DVTogOC1iaXQgU0FSIEFEQyBiYXNpYyIsInJpZCI6ImVhc292YXJnaGVzZSIsIkRvYyB2ZXJzaW9uIjoiMi4xLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiV0lSRUQiLCJEb2MgRmFtaWx5IjoiVFlQRS1DIn0=)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzM2NzciLCJTcGVjIE51bWJlciI6IjAwMi0zMzY3NyIsIkRvYyBUaXRsZSI6IkVaLVBEJnRyYWRlOyBQTUcxIE1DVTogOC1iaXQgU0FSIEFEQyBiYXNpYyIsInJpZCI6ImVhc292YXJnaGVzZSIsIkRvYyB2ZXJzaW9uIjoiMi4yLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiV0lSRUQiLCJEb2MgRmFtaWx5IjoiVFlQRS1DIn0=)
+
 
 ## Requirements
 
@@ -14,11 +15,13 @@ This code example demonstrates the method of using the 8-bit SAR ADC in the USBP
 - Programming language: C
 - Associated parts: All [EZ-PD&trade; PMG1 MCU](https://www.infineon.com/PMG1) parts
 
+
 ## Supported toolchains (make variable 'TOOLCHAIN')
 
 - GNU Arm&reg; Embedded Compiler v10.3.1 (`GCC_ARM`) – Default value of `TOOLCHAIN`
 - Arm&reg; Compiler v6.16 (`ARM`)
 - IAR C/C++ Compiler v9.30.1 (`IAR`)
+
 
 ## Supported kits (make variable 'TARGET')
 
@@ -27,6 +30,9 @@ This code example demonstrates the method of using the 8-bit SAR ADC in the USBP
 - [EZ-PD&trade; PMG1-S2 Prototyping Kit](https://www.infineon.com/CY7112) (`PMG1-CY7112`)
 - [EZ-PD&trade; PMG1-S3 Prototyping Kit](https://www.infineon.com/CY7113) (`PMG1-CY7113`)
 - [EZ-PD&trade; PMG1-B1 Prototyping Kit](https://www.infineon.com/EVAL_PMG1_B1_DRP) (`EVAL_PMG1_B1_DRP`)
+- [EZ-PD&trade; PMG1-S1 DRP Prototyping Kit](https://www.infineon.com/EVAL_PMG1_S1_DRP) (`EVAL_PMG1_S1_DRP`)
+- [EZ-PD&trade; PMG1-S3 DRP Prototyping Kit](https://www.infineon.com/EVAL_PMG1_S3_DUALDRP) (`EVAL_PMG1_S3_DUALDRP`)
+
 
 ## Hardware setup
 
@@ -34,7 +40,8 @@ This code example demonstrates the method of using the 8-bit SAR ADC in the USBP
 
 2.	Connect the PMG1 USB PD sink port (J10) to a USB-C power adapter/USB port on the PC using a Type-C/Type-A to Type-C cable to power the PMG1 device for normal operation.
 
-3.	Connect the UART Tx and UART Rx lines from the PMG1 kit to the KitProg3 as shown in the following table to establish a UART connection between KitProg3 and the PMG1 device for the following revisions of the PMG1 prototyping kits. Note that in this application, the UART Tx line alone will be used to transmit the voltage data onto a serial monitor.
+3.	Connect the UART Tx and UART Rx lines from the PMG1 kit to the KitProg3 as shown in the following table to establish a UART connection between KitProg3 and the PMG1 device for the following revisions of the PMG1 prototyping kits. Note that in this application, 
+only the UART Tx line is used to transmit the voltage data onto a serial monitor.
 
     **Table 1. UART connection for PMG1 kit**
 
@@ -45,6 +52,8 @@ This code example demonstrates the method of using the 8-bit SAR ADC in the USBP
      PMG1-CY7112 (revision 2 or lower) | J6.10 to J3.8 | J6.9 to J3.10
      PMG1-CY7113 (revision 3 or lower) | J6.10 to J3.8 | J6.9 to J3.10
      EVAL_PMG1_B1_DRP | SW5 to 1-2 position | SW4 to 1-2 position
+	  EVAL_PMG1_S3_DUALDRP | N/A  | N/A
+	  EVAL_PMG1_S1_DRP | N/A   | N/A
      
      <br>
      
@@ -61,6 +70,8 @@ This code example demonstrates the method of using the 8-bit SAR ADC in the USBP
      PMG1-CY7111 | J6.13 (P1.1)
      PMG1-CY7112 | J6.13 (P3.4)
      PMG1-CY7113 | J7.7 (P4.0)
+	  EVAL_PMG1_S1_DRP | J6.13 (P1.1)
+	  EVAL_PMG1_S3_DUALDRP | J7.7 (P4.0)
      EVAL_PMG1_B1_DRP | J7.7 (P3.0)
      
      <br>
@@ -74,8 +85,11 @@ See the [ModusToolbox&trade; tools package installation guide](https://www.infin
 
 Install a terminal emulator to display the serial data. Instructions in this document use [Tera Term](https://teratermproject.github.io/index-en.html).
 
+This example requires no additional software or tools.
+
 
 ## Using the code example
+
 
 ### Create the project
 
@@ -132,6 +146,7 @@ Argument | Description | Required/optional
 
 </details>
 
+
 ### Open the project
 
 After the project has been created, you can open it in your preferred development environment.
@@ -184,9 +199,9 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
 
 ## Operation
 
-1. Ensure that the steps listed in the [Hardware setup](#hardware-setup) section are completed.
+1. Complete the steps listed in the [Hardware setup](#hardware-setup) section.
 
-2. Ensure that the jumper shunt on the power selection jumper (J5) is placed at position 2-3 to enable programming mode for PMG1-CY7110, PMG1-CY7111, PMG1-CY7112, and PMG1-CY7113 prototyping kits. Skip this step for EVAL_PMG1_B1_DRP kit.
+2. Ensure that the jumper shunt on the power selection jumper (J5) is placed at position 2-3 to enable programming mode for PMG1-CY7110, PMG1-CY7111, PMG1-CY7112, PMG1-CY7113, EVAL_PMG1_S1_DRP, and EVAL_PMG1_S3_DUALDRP prototyping kits. Skip this step for the EVAL_PMG1_B1_DRP kit.
 
 3. Connect the board to your PC using the USB cable through the KitProg3 USB Type-C port (J1).
 
@@ -219,13 +234,13 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
       ```
    </details>
 
-5. After programming the kit, disconnect the USB cable. Move to the next step for EVAL_PMG1_B1_DRP kit. Change the position on the power selection jumper (J5) to 1-2 to power the kit through the USB PD port (J10) for PMG1-CY7110, PMG1-CY7111, PMG1-CY7112, and PMG1-CY7113 prototyping kits.
+5. After programming the kit, disconnect the USB cable. Move to the next step for EVAL_PMG1_B1_DRP kit. Change the position on the power selection jumper (J5) to 1-2 to power the kit through the USB PD port (J10) for PMG1-CY7110, PMG1-CY7111, PMG1-CY7112,  PMG1-CY7113, EVAL_PMG1_S1_DRP prototyping kits. For EVAL_PMG1_S3_DUALDRP prototyping kit change the position on the power selection jumper (J5) to 1-2 to power the kit through the USB PD ports (J10 and J14).
 
-6. Now, reconnect the USB cable to KitProg3 USB Type-C port (J1). Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud.
+6. Reconnect the USB cable to KitProg3 USB Type-C port (J1). Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud.
 
-7. Power the kit through the PMG1 USB PD sink port (J10) using the second USB cable to power the PMG1-CY7110, PMG1-CY7111, PMG1-CY7112, and PMG1-CY7113 prototyping kits. Skip this step for the EVAL_PMG1_B1_DRP kit as it is automatically powered when the kit is connected through the KitProg3 USB Type-C port (J1).
+7. Power the kit through the PMG1 USB PD sink port (J10) using the second USB cable to power the PMG1-CY7110, PMG1-CY7111, PMG1-CY7112, PMG1-CY7113, and EVAL_PMG1_S1_DRP prototyping kits. For EVAL_PMG1_S3_DUALDRP, power the kit through the USB PD ports (J10 or J14). Skip this step for EVAL_PMG1_B1_DRP as it is automatically powered when the kit is connected through the KitProg3 USB Type-C port (J1).
 
-8. The application starts printing "Displaying the measured voltage & 8-bit SAR ADC result:". Subsequently, the ADC result and the voltage values corresponding to the external voltage applied are displayed on UART terminal at an interval of 0.5 seconds. The user LED toggles each time an output is available on the UART terminal.
+8. The application starts printing **Displaying the measured voltage & 8-bit SAR ADC result:**. Subsequently, the ADC result and the voltage values corresponding to the external voltage applied are displayed on UART terminal at an interval of 0.5 seconds. The user LED toggles each time an output is available on the UART terminal.
 
 9. The default value of the reference voltage for the ADC is 2.0 V. To use the ADC with another reference voltage value, see the [Design and implementation](#design-and-implementation) section.
 
@@ -236,7 +251,8 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
 
 ## Debugging
 
-You can debug the example to step through the code. 
+You can debug the example to step through the code.
+
 
 <details><summary><b>In Eclipse IDE</b></summary>
 
@@ -252,6 +268,8 @@ See the **Debug mode** section in the kit user guide for debugging the applicati
 Follow the instructions in your preferred IDE.
 </details>
 
+<br>
+
 See the "Debug mode" section in the kit user guide for debugging the application on the CY7110 prototyping kit. For more details, see the "Program and debug" section in the [Eclipse IDE for ModusToolbox&trade; software user guide](https://www.infineon.com/MTBEclipseIDEUserGuide).
 
 
@@ -266,17 +284,17 @@ An external voltage is applied to the analog input of the ADC. The ADC result is
 <img src = "images/sar-adc-block-diagram.png" width = "700"/>
 
 
-The 8-bit SAR ADC block allows the selection of the reference voltage (Vref) from two sources as shown in **Figure 2**.
+The 8-bit SAR ADC block allows the selection of the reference voltage (Vref) from two sources, as shown in **Figure 2**.
 
 - **PMG1-S0, PMG1-S1, PMG1-S3, and EVAL_PMG1_B1_DRP MCUs:** Either Vref = 2.0 V (Bandgap reference) or VDDD (3.3 V)
 
-- **PMG1-S2 MCU:** Only Vref = VDDD (3.3 V) because the RefGen block is absent on PMG1-S2
+- **PMG1-S2 MCU:** Only Vref = VDDD (3.3 V) because the RefGen block is absent in PMG1-S2
 
-An external voltage applied through a GPIO pin is routed to the **analog_in1 (amux_a)** input line of the multiplexer using high speed I/O matrix (HSIOM). The multiplexer then routes this analog signal to the input of the SAR ADC.
+An external voltage applied through a GPIO pin is routed to the **analog_in1 (amux_a)** input line of the multiplexer using high speed I/O matrix (HSIOM). The multiplexer then routes this analog signal to the SAR ADC input.
 
 The `ADC_VREF` macro in the *main.c* file is used to switch the ADC reference voltage value on PMG1-S0, PMG1-S1, PMG1-S3, and EVAL_PMG1_B1_DRP devices. By default, 2.0 V is selected as the reference voltage as indicated by the macro value `CY_USBPD_ADC_VREF_PROG`. To switch the reference voltage to VDDD (3.3 V), the macro value is replaced by `CY_USBPD_ADC_VREF_VDDD`.
 
-- The **USB-C Power Delivery 0** block is enabled under the 'Peripherals' tab in the Device Configurator to allow the usage of the 8-bit SAR ADC which is an integral part of the USBPD block. Note that under the 'Inputs' section, **Clock SAR** is assigned with '8 bit Divider 2 clk' with a suitable divider value, resulting in a 1 MHz clock frequency applied to the 8-bit SAR ADC as shown in **Figure 3**.
+- The **USB-C Power Delivery 0** block is enabled under the 'Peripherals' tab in the Device Configurator to allow the usage of the 8-bit SAR ADC which is an integral part of the USBPD block. Note that under the "Inputs" section, **Clock SAR** is assigned with "8 bit Divider 2 clk" with a suitable divider value, resulting in a 1 MHz clock frequency applied to the 8-bit SAR ADC, as shown in **Figure 3**.
 
   **Figure 3. 8-bit SAR ADC enabled under USB-C Power Delivery 0 block**
   
@@ -290,9 +308,10 @@ The `ADC_VREF` macro in the *main.c* file is used to switch the ADC reference vo
 
 <img src = "images/firmware-flowchart.png" width = "300"/>
 
+
 ### Compile-time configurations
 
-The EZ-PD&trade; PMG1 MCU 8-bit SAR ADC basic application functionality can be customized through the compile-time parameters that can be turned ON/OFF through the *main.c* file.
+The EZ-PD&trade; PMG1 MCU 8-bit SAR ADC basic application functionality can be customized through the compile-time parameters that can be turned ON or OFF through the *main.c* file.
 
  Macro name          | Description                           | Allowed values 
  :------------------ | :------------------------------------ | :------------- 
@@ -300,16 +319,19 @@ The EZ-PD&trade; PMG1 MCU 8-bit SAR ADC basic application functionality can be c
 
  <br>
 
+
 ### Resources and settings
 
 **Table 3. Application resources**
 
-Resource  |  Alias/object     |    Purpose
-:------- | :------------    | :------------
+ Resource  |  Alias/object     |    Purpose
+ :-------- | :-------------    | :------------
 USB PD 0   | 8-bit SAR ADC  | 8-bit SAR ADC in the USB PD block used to measure the analog voltage
 SCB (PDL)	 | CYBSP_UART		| UART SCB block used for serial communication to send the ADC data through the serial port
 LED (BSP)  | CYBSP_USER_LED | User LED to show the output
 GPIO (PDL) | CYBSP_AMUX_A 	| GPIO pin in analog drive mode used for connection to the ana_in1 pin of the ADC MUX via HSIOM
+
+<br>
 
 
 ## Related resources
@@ -330,15 +352,18 @@ Tools  | [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) – ModusT
 
 Infineon provides a wealth of data at [www.infineon.com](https://www.infineon.com) to help you select the right device, and quickly and effectively integrate it into your design.
 
+
 ## Document history
 
 Document title: *CE233677* – *EZ-PD&trade; PMG1 MCU: 8-bit SAR ADC basic*
 
- Version | Description of change 
- ------- | --------------------- 
- 1.0.0   | New code example      
+
+ Version | Description of change
+ ------- | ---------------------
+ 1.0.0   | New code example
  2.0.0   | Major update to support ModusToolbox&trade; v3.0. This version is not backward compatible with previous versions of ModusToolbox&trade; 
  2.1.0   | Update to support EVAL_PMG1_B1_DRP kit
+ 2.2.0   | Update to support EVAL_PMG1_S1_DRP and EVAL_PMG1_S3_DUALDRP kits
 <br>
 
 
@@ -354,4 +379,4 @@ The Bluetooth&reg; word mark and logos are registered trademarks owned by Blueto
 <br>
 TO THE EXTENT PERMITTED BY APPLICABLE LAW, CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS DOCUMENT OR ANY SOFTWARE OR ACCOMPANYING HARDWARE, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  No computing device can be absolutely secure.  Therefore, despite security measures implemented in Cypress hardware or software products, Cypress shall have no liability arising out of any security breach, such as unauthorized access to or use of a Cypress product. CYPRESS DOES NOT REPRESENT, WARRANT, OR GUARANTEE THAT CYPRESS PRODUCTS, OR SYSTEMS CREATED USING CYPRESS PRODUCTS, WILL BE FREE FROM CORRUPTION, ATTACK, VIRUSES, INTERFERENCE, HACKING, DATA LOSS OR THEFT, OR OTHER SECURITY INTRUSION (collectively, "Security Breach").  Cypress disclaims any liability relating to any Security Breach, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any Security Breach.  In addition, the products described in these materials may contain design defects or errors known as errata which may cause the product to deviate from published specifications. To the extent permitted by applicable law, Cypress reserves the right to make changes to this document without further notice. Cypress does not assume any liability arising out of the application or use of any product or circuit described in this document. Any information provided in this document, including any sample design information or programming code, is provided only for reference purposes.  It is the responsibility of the user of this document to properly design, program, and test the functionality and safety of any application made of this information and any resulting product.  "High-Risk Device" means any device or system whose failure could cause personal injury, death, or property damage.  Examples of High-Risk Devices are weapons, nuclear installations, surgical implants, and other medical devices.  "Critical Component" means any component of a High-Risk Device whose failure to perform can be reasonably expected to cause, directly or indirectly, the failure of the High-Risk Device, or to affect its safety or effectiveness.  Cypress is not liable, in whole or in part, and you shall and hereby do release Cypress from any claim, damage, or other liability arising from any use of a Cypress product as a Critical Component in a High-Risk Device. You shall indemnify and hold Cypress, including its affiliates, and its directors, officers, employees, agents, distributors, and assigns harmless from and against all claims, costs, damages, and expenses, arising out of any claim, including claims for product liability, personal injury or death, or property damage arising from any use of a Cypress product as a Critical Component in a High-Risk Device. Cypress products are not intended or authorized for use as a Critical Component in any High-Risk Device except to the limited extent that (i) Cypress's published data sheet for the product explicitly states Cypress has qualified the product for use in a specific High-Risk Device, or (ii) Cypress has given you advance written authorization to use the product as a Critical Component in the specific High-Risk Device and you have signed a separate indemnification agreement.
 <br>
-Cypress, the Cypress logo, and combinations thereof, ModusToolbox, PSoC, CAPSENSE, EZ-USB, F-RAM, and TRAVEO are trademarks or registered trademarks of Cypress or a subsidiary of Cypress in the United States or in other countries. For a more complete list of Cypress trademarks, visit [www.infineon.com](https://www.infineon.com). Other names and brands may be claimed as property of their respective owners.
+Cypress, the Cypress logo, and combinations thereof, ModusToolbox, PSoC, CAPSENSE, EZ-USB, F-RAM, and TRAVEO are trademarks or registered trademarks of Cypress or a subsidiary of Cypress in the United States or in other countries. For a more complete list of Cypress trademarks, visit www.infineon.com. Other names and brands may be claimed as property of their respective owners.
